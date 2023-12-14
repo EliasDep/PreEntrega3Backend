@@ -1,0 +1,48 @@
+<article>
+
+  <header>
+    <h1>Your Profile</h1>
+  </header>
+
+  <p>Nombre: {{user.first_name}}</p>
+  <p>Apellido: {{user.last_name}}</p>
+  <p>Correo: {{user.email}}</p>
+  <p>Rol: {{user.role}}</p>
+
+  <div>
+
+    <h1>Productos</h1>
+
+    <table id="main" role="grid">
+
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Code</th>
+        <th>Stock</th>
+      </tr>
+
+      {{#each products}}
+
+        <tr>
+          <td>{{this.title}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.code}}</td>
+          <td>{{this.stock}}</td>
+          
+          <button type="submit">Agregar al carrito</button>
+        </tr>
+
+      {{/each}}
+      
+    </table>
+
+  </div>
+
+  <footer>
+    <a href="/api/sessions/logout" role="button">Logout</a>
+  </footer>
+
+</article>

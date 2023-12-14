@@ -1,0 +1,25 @@
+<h1>Carrito de Compras</h1>
+
+<table id="main" role="grid">
+
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+
+  {{#each cartProducts.products}}
+
+    <tr>
+      <td>{{this.product.title}}</td>
+      <td>{{this.product.description}}</td>
+      <td>{{this.product.price}}</td>
+      <td>{{this.product.quantity}}</td>
+    </tr>
+
+  {{/each}}
+  
+</table>
+
+<p>Total de productos en el carrito: {{cartProducts.products.length}}</p>

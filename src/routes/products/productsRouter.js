@@ -3,6 +3,7 @@ import { getProducts, getProductById, buildResponse} from '../../controllers/pro
 import { updateProduct } from '../../controllers/products/updateproductController.js'
 import { createProduct } from '../../controllers/products/newproductController.js'
 import { deleteProduct } from '../../controllers/products/deleteproductController.js'
+import { authorizeAdmin } from '../../middlewares/authMiddleware.js'
 
 
 const router = Router()
@@ -17,13 +18,13 @@ router.get ('/products', getProducts, async (req, res) => {
 router.get ('/products/:pid', getProductById)
 
 
-router.put ('/products/:pid', updateProduct)
+router.put ('/products/:pid', authorizeAdmin, updateProduct)
 
 
-router.post ('/products', createProduct)
+router.post ('/products', authorizeAdmin, createProduct)
 
 
-router.delete ('/:pid', deleteProduct)
+router.delete ('/:pid', authorizeAdmin, deleteProduct)
 
 
 export default router

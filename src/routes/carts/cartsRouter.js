@@ -6,6 +6,8 @@ import { updateCart } from '../../controllers/carts/updatecartController.js'
 import { updateProductCart } from '../../controllers/carts/updateproductController.js'
 import { removeProductCart } from '../../controllers/carts/deleteproductcartController.js'
 import { deleteProductsCart } from '../../controllers/carts/deletecartController.js'
+import { authorizeUser } from '../../middlewares/authMiddleware.js'
+import { cartPurchase } from '../../controllers/carts/cartPurchase.js'
 
 
 const router = Router()
@@ -20,7 +22,10 @@ router.get ('/carts/:cid', getCart, async (req, res) => {
 router.post ('/carts', createCart)
 
 
-router.post ('/cart/:cid/product', addProductToCart)
+router.post ('/cart/:cid/product', authorizeUser, addProductToCart)
+
+
+router.post ('cart/:cid/purchase', cartPurchase)
 
 
 router.put ('/carts/:cid', updateCart)
